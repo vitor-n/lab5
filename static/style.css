@@ -1,11 +1,22 @@
-:root {
-    --grey: oklch(80%, 2%, 200);
-    --white: #fff;
-    --color-accent: #000;
-    --color-accent-bg: #444;
+[color-scheme="light"] {
+    --background-color: antiquewhite;
+    --text-color: #000000;
+    --navbar-background: #f8f8f8;
+    --nav-hover-color: #333;
+}
+
+[color-scheme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --navbar-background: #222;
+    --nav-hover-color: #bbb;
 }
 
 body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.5s, color 0.3s;
+    
     margin: 20px;
     font-size: 100%/1.5 system-ui;
     max-width: 100ch;
@@ -16,26 +27,6 @@ body {
 #coal_mine { 
     border-radius: 100%;
 }
-
-/* input, textarea, button {
-    font: inherit;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-label, input, textarea, button {
-    width: 100%;
-    display: block;
-    resize: none;
-}
-
-textarea {
-    height: auto;
-}
-
-label {
-    margin-block: 1rem;
-} */
 
 form {
     display: grid;

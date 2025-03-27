@@ -1,7 +1,7 @@
 
 <script>
 import { base } from "$app/paths";
-import { page } from "$app/stores"; 
+import { page } from "$app/stores";
 
 let pages = [
     {url: "/", title: "Home"},
@@ -16,46 +16,60 @@ let colorScheme = localStorage.colorScheme ?? "light dark";
 
 let root = globalThis?.document?.documentElement;
 $: root?.style.setProperty("color-scheme", colorScheme);
+$: root?.setAttribute("color-scheme", colorScheme);
 $: localStorage.colorScheme = colorScheme;
 
-let profileData = fetch("https://api.github.com/users/vitor-n");
+function toggleTheme() {
+    colorScheme = colorScheme === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("color-scheme", colorScheme);
+}
+    
 </script>
 
-<nav>
-    {#each pages as p}
-        <a 
-        href= { p.url.startsWith("http")? p.url: `${base}${p.url}`}
-        class:current={$page.route.id === p.url}
-        target={p.url.startsWith("http") ? "_blank" : undefined}
-        >
-        {p.title}
+<div id="navbar">
+    <nav>
+        {#each pages as p}
+            <a 
+            href= { p.url.startsWith("http")? p.url: `${base}${p.url}`}
+            class:current={$page.route.id === p.url}
+            target={p.url.startsWith("http") ? "_blank" : undefined}
+            >
+            {p.title}
         </a>
-    {/each}
-</nav>
+        {/each}
+    </nav>
+</div>
 
-<label class="color-scheme">
-    Theme:
-    <select bind:value={ colorScheme }>
-        <option value="light dark"> Automatic </option>
-        <option value="light"> Light </option>
-        <option value="dark"> Dark </option>
-    </select>
-</label>
+<svelte:head>
+    <link rel="preload" as="image" href={`${base}/imgs/dark-theme-icon.png`}>
+    <link rel="preload" as="image" href={`${base}/imgs/light-theme-icon.png`}>
+</svelte:head>
+
+<button on:click={toggleTheme} class="color-scheme">
+    {#if colorScheme === "dark"}
+        <img src={`${base}/imgs/dark-theme-icon.png`} height="18rem" alt="Dark Mode">
+    {:else}
+        <img src={`${base}/imgs/light-theme-icon.png`} height="20rem" alt="Light Mode">
+    {/if}
+</button>
 
 
 <slot/>
 
 <style>
     .color-scheme {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
+        background: none;
+        border: none;
+        position: fixed;
+        top: 3rem;
+        right: 3rem;
     }
+    .color-scheme:hover {
+        cursor: pointer;
+    }
+
     nav {
         display: flex;
-        border-bottom-width: 2px;
-        border-bottom-style: solid;
-        border-bottom-color: black;
     }
 
     nav a {
@@ -69,15 +83,11 @@ let profileData = fetch("https://api.github.com/users/vitor-n");
     nav .current{
         border-bottom-width: 3px;
         border-bottom-style: solid;
-        border-bottom-color: black;
     }
 
     nav a:hover {
-        background-color: var(--color-accent-bg);
-        border-bottom-color: var(--color-accent);
         border-bottom-style: solid;
         border-bottom-width: 3px;
         font-weight: bold;
-        color: white;
     }
 </style>
