@@ -7,41 +7,10 @@
 
 body {
     margin: 20px;
-    background-color:antiquewhite;
     font-size: 100%/1.5 system-ui;
     max-width: 100ch;
     margin-inline: auto;
     padding: 1cm;
-}
-
-nav {
-    display: flex;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: black;
-}
-
-nav a {
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    padding: 0.5em;
-}
-
-nav .current{
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-    border-bottom-color: black;
-}
-
-nav a:hover {
-    background-color: var(--color-accent-bg);
-    border-bottom-color: var(--color-accent);
-    border-bottom-style: solid;
-    border-bottom-width: 3px;
-    font-weight: bold;
-    color: white;
 }
 
 #coal_mine { 
