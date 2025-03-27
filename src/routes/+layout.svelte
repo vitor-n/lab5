@@ -2,7 +2,6 @@
 <script>
 import { base } from "$app/paths";
 import { page } from "$app/stores"; 
-import { onMount } from "svelte";
 
 let pages = [
     {url: "/", title: "Home"},
@@ -19,6 +18,7 @@ let root = globalThis?.document?.documentElement;
 $: root?.style.setProperty("color-scheme", colorScheme);
 $: localStorage.colorScheme = colorScheme;
 
+let profileData = fetch("https://api.github.com/users/vitor-n");
 </script>
 
 <nav>

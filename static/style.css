@@ -80,3 +80,26 @@ article h2{
 	grid-template-columns: repeat(2, 1fr); /*step 5 free*/
 	min-width: 25em; /*step 5 free*/
 }
+
+
+dl{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+dt{
+    grid-row: 1;
+    font-family: inherit;
+    font-weight: bold;
+}
+dd{
+    align-items: center;
+    font-family: inherit;
+    font-weight: bold;
+}
+section{
+    border-width:0.15em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color:var(--border-gray);
+}
