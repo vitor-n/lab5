@@ -1,20 +1,44 @@
-
 <svelte:head>
   <title>Portfolio</title>
 </svelte:head>
 
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 50px 0;
+  }
 
-<h1> Vitor do Nascimento </h1>
-<img src="./imgs/mm.jpg" alt="It's a coal mine!" height="400px" id="coal_mine">
-<p> Hey! My name is Vitor, i'm a Data Science undergrad!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium tenetur corrupti nesciunt repellat itaque voluptate molestias cupiditate rerum culpa eligendi, officia ut. Eius voluptas temporibus laboriosam quas enim quae eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis veritatis quia autem vitae perferendis reprehenderit odio? Dignissimos consectetur aut quia cumque ipsum? Id et nemo exercitationem laborum! Laborum, eum voluptates?
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, recusandae dicta! Saepe dolorem adipisci similique, blanditiis odit explicabo cumque harum necessitatibus quidem magni esse soluta incidunt id ipsam veniam dolores!
-</p>
+  h1 {
+    font-size: 2rem;
+  }
 
-{#await fetch("https://api.github.com/users/vitor-n")}
+  #coal_mine {
+    max-height: 350px;
+    max-width: 350px;
+    margin-right: 30px;
+    border-radius: 100%;
+    flex: 1;
+  }
+  .text {
+    flex: 1;
+  }
+
+</style>
+
+<div class="container">
+  <img src="./imgs/mm.jpg" alt="It's a coal mine!" id="coal_mine">
+  <div class="text">
+    <h1>Olá! Me chamo Vitor,</h1>
+    <p>
+      Sou técnico em Automação Industrial pelo IFMG campus Ouro Preto e atualmente estou no 5º período do bacharelado em Ciência de Dados e Inteligência Artificial pela FGV - EMAp, onde sou bolsista pelo programa <a href="https://cdmc.fgv.br/selecao-de-talentos" target="_blank" rel="noopener noreferrer" style="color: inherit;">Seleção de Talentos</a> promovido pelo Centro para o Desenvolvimento da Matemática e Ciências – CDMC. Tenho grande interesse em Machine Learning, Visualização de Dados e Estatística.
+    </p>
+  </div>
+</div>
+
+
+<!-- {#await fetch("https://api.github.com/users/vitor-n")}
   <p>Loading...</p>
 {:then response}
   {#if response.ok}
@@ -38,5 +62,5 @@
     {/await}
 
   {/if}
-{/await}
+{/await} -->
   

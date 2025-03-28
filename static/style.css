@@ -3,6 +3,7 @@
     --text-color: #000000;
     --navbar-background: #f8f8f8;
     --nav-hover-color: #333;
+    --link-highlight: #3f6a54;
 }
 
 [color-scheme="dark"] {
@@ -10,22 +11,19 @@
     --text-color: #ffffff;
     --navbar-background: #222;
     --nav-hover-color: #bbb;
+    --link-highlight: #a4dacc;
 }
 
 body {
     color: var(--text-color);
     background-color: var(--background-color);
-    transition: background-color 0.5s, color 0.3s;
-    
-    margin: 20px;
-    font-size: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-inline: auto;
-    padding: 1cm;
-}
+    /* transition: background-color 0.5s, color 0.5s; */
 
-#coal_mine { 
-    border-radius: 100%;
+    margin: auto;
+    margin-inline: auto;
+    font-size: 100%/1.5 system-ui;
+    max-width: 110ch;
+    padding: 1.5cm;
 }
 
 form {
@@ -40,57 +38,4 @@ form label {
 
 button, label{
     grid-column: 1 / -1;
-}
-
-
-
-img{
-	max-width: 100%; /*step 4.2*/
-}
-
-.projects {
-	display:grid; /*step 4.3*/
-	grid-template-columns : repeat(auto-fill, minmax(15em, 1fr));/*step 4.3*/
-	min-width: 15em; /*step 4.3*/
-	max-width: 1fr; /*step 4.3*/
-}
-
-article{
-	margin: 10px; /*step 4.3*/
-	display: grid; /*step 4.4*/
-	grid-template-rows: subgrid; /*step 4.4*/
-	grid-row: span 3; /*step 4.4*/
-}
-
-article h2{
-	margin: 0; /*step 4.4*/
-}
-
-.resume{
-	display: grid; /*step 5 free*/
-	grid-template-columns: repeat(2, 1fr); /*step 5 free*/
-	min-width: 25em; /*step 5 free*/
-}
-
-
-dl{
-    display: grid;
-    grid-template-columns: auto;
-}
-
-dt{
-    grid-row: 1;
-    font-family: inherit;
-    font-weight: bold;
-}
-dd{
-    align-items: center;
-    font-family: inherit;
-    font-weight: bold;
-}
-section{
-    border-width:0.15em;
-    border-radius: 0.5em;
-    border-style: solid;
-    border-color:var(--border-gray);
 }

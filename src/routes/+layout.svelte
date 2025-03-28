@@ -15,7 +15,7 @@ let localStorage = globalThis.localStorage ?? {};
 let colorScheme = localStorage.colorScheme ?? "light dark";
 
 let root = globalThis?.document?.documentElement;
-$: root?.style.setProperty("color-scheme", colorScheme);
+// $: root?.style.setProperty("color-scheme", colorScheme);
 $: root?.setAttribute("color-scheme", colorScheme);
 $: localStorage.colorScheme = colorScheme;
 
@@ -38,38 +38,66 @@ function toggleTheme() {
         </a>
         {/each}
     </nav>
+    <button class="translate-button">
+        {#if colorScheme === "dark"}
+            <img src={`${base}/imgs/light-translate-icon.png`} height="20rem" alt="Light Mode">
+        {:else}
+            <img src={`${base}/imgs/dark-translate-icon.png`} height="20rem" alt="Dark Mode">
+        {/if}
+    </button>
+    <button on:click={toggleTheme} class="color-scheme">
+        {#if colorScheme === "dark"}
+            <img src={`${base}/imgs/light-theme-icon.png`} height="20rem" alt="Light Mode">
+        {:else}
+            <img src={`${base}/imgs/dark-theme-icon.png`} height="18rem" alt="Dark Mode">
+        {/if}
+    </button>
 </div>
 
-<svelte:head>
+<!-- <svelte:head>
     <link rel="preload" as="image" href={`${base}/imgs/dark-theme-icon.png`}>
     <link rel="preload" as="image" href={`${base}/imgs/light-theme-icon.png`}>
-</svelte:head>
-
-<button on:click={toggleTheme} class="color-scheme">
-    {#if colorScheme === "dark"}
-        <img src={`${base}/imgs/dark-theme-icon.png`} height="18rem" alt="Dark Mode">
-    {:else}
-        <img src={`${base}/imgs/light-theme-icon.png`} height="20rem" alt="Light Mode">
-    {/if}
-</button>
-
+    <link rel="preload" as="image" href={`${base}/imgs/dark-translate-icon.png`}>
+    <link rel="preload" as="image" href={`${base}/imgs/light-translate-icon.png`}>
+</svelte:head> -->
 
 <slot/>
 
 <style>
-    .color-scheme {
+    .color-scheme, .translate-button {
+        position: absolute;
+        top: 0;
+        bottom: 0;
         background: none;
         border: none;
-        position: fixed;
-        top: 3rem;
-        right: 3rem;
     }
-    .color-scheme:hover {
+    .color-scheme:hover, .translate-button {
         cursor: pointer;
+    }
+    .color-scheme {
+        right: -5ch;
+    }
+    .translate-button {
+        right: -15ch;
+    }
+
+    #navbar {
+        position: sticky;
+        display: flex;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        margin-bottom: 1cm;
+        padding: .5cm 0;
+        background-color: var(--background-color);
     }
 
     nav {
         display: flex;
+        flex-wrap: wrap ;
+        margin: auto;
+        width: 90%;
     }
 
     nav a {
