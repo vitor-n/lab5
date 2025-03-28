@@ -30,9 +30,9 @@
 <div class="container">
   <img src="./imgs/mm.jpg" alt="It's a coal mine!" id="coal_mine">
   <div class="text">
-    <h1>Olá! Me chamo Vitor,</h1>
+    <h1>Olá! Me chamo Vitor <span style="font-size: 1.5ch;">👋</span></h1>
     <p>
-      Sou técnico em Automação Industrial pelo IFMG campus Ouro Preto e atualmente estou no 5º período do bacharelado em Ciência de Dados e Inteligência Artificial pela FGV - EMAp, onde sou bolsista pelo programa <a href="https://cdmc.fgv.br/selecao-de-talentos" target="_blank" rel="noopener noreferrer" style="color: inherit;">Seleção de Talentos</a> promovido pelo Centro para o Desenvolvimento da Matemática e Ciências – CDMC. Tenho grande interesse em Machine Learning, Visualização de Dados e Estatística.
+      Sou técnico em Automação Industrial pelo IFMG campus Ouro Preto e atualmente estou no 5º período do bacharelado em Ciência de Dados e Inteligência Artificial pela FGV - EMAp, onde sou bolsista pelo programa <a href="https://cdmc.fgv.br/selecao-de-talentos" target="_blank" rel="noopener noreferrer" style="color: inherit;">Seleção de Talentos</a> promovido pelo Centro para o Desenvolvimento da Matemática e Ciências – CDMC. Tenho grande interesse em Machine Learning, Visualização de Dados, Programação e Estatística.
     </p>
   </div>
 </div>
