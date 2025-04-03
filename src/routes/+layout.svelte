@@ -3,6 +3,15 @@
 import { base } from "$app/paths";
 import { page } from "$app/stores";
 
+let localStorage = globalThis.localStorage ?? {};
+let colorScheme = localStorage.colorScheme ?? "dark";
+
+let root = globalThis?.document?.documentElement;
+$: root?.setAttribute("color-scheme", colorScheme);
+$: localStorage.colorScheme = colorScheme;
+
+const toggleTheme = () => colorScheme = colorScheme === "light" ? "dark" : "light";
+
 let pages = [
     {url: "/", title: "Home"},
     {url: "/projects", title: "Projects"},
@@ -11,19 +20,6 @@ let pages = [
     {url: "https://github.com/vitor-n", title: "GitHub"},
 ];
 
-let localStorage = globalThis.localStorage ?? {};
-let colorScheme = localStorage.colorScheme ?? "light dark";
-
-let root = globalThis?.document?.documentElement;
-// $: root?.style.setProperty("color-scheme", colorScheme);
-$: root?.setAttribute("color-scheme", colorScheme);
-$: localStorage.colorScheme = colorScheme;
-
-function toggleTheme() {
-    colorScheme = colorScheme === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("color-scheme", colorScheme);
-}
-    
 </script>
 
 <div id="navbar">
