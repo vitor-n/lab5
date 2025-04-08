@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
     --text-color: #000000;
     --navbar-background: #f8f8f8;
     --nav-hover-color: #333;
+    --border-color: #1f1f1f;
     --link-highlight: #3f6a54;
 }
 
@@ -24,6 +25,7 @@ h1, h2, h3, h4, h5, h6 {
     --text-color: #ffffff;
     --navbar-background: #222;
     --nav-hover-color: #bbb;
+    --border-color: #f8f8f8;
     --link-highlight: #a4dacc;
 }
 

@@ -25,6 +25,8 @@
 <div class="container">
     <svg viewBox="-50 -50 100 100">
         {#each arcs as arc, index}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
             <path
                 d={arc} fill={ colors(index) }
                 class:selected={selectedIndex === index}
@@ -45,7 +47,7 @@
 
 <style>
     svg {
-        max-width: 20em;
+        max-width: 15em;
         margin-block: 2em;
 
         /* Do not clip shapes outside the viewBox */
@@ -86,6 +88,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        /* justify-content: center; */
     }
     .legend {
         /* border: 1px solid white; */
