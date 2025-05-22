@@ -110,31 +110,10 @@
 			.attr("dominant-baseline", "hanging")
 			.text((d) => `${d.lines.length} lines`);
 
-		groups
-			.attr("transform", (d, i) => `translate(0, ${positions[i]})`)
-			.select("text.filename")
-			.text((d) => d.name);
-
-		groups
-			.select("text.linecount")
-			.text((d) => `${d.lines.length} lines`)
-			.attr("x", 10);
-
-		enterGroups
-			.append("text")
-			.attr("class", "unit-dots")
-			.attr("x", dotsColumnX)
-			.attr("y", baseY - 2)
-			.attr("dominant-baseline", "mathematical")
-			.attr("fill", "#1f77b4")
-			.html((d) => generateDots(d, svgWidth));
-
-		groups
-			.select("text.unit-dots")
-			.html((d) => generateDots(d, svgWidth))
-			.attr("x", dotsColumnX)
-			.attr("fill", "#1f77b4");
-
+		// groups
+		// 	.attr("transform", (d, i) => `translate(0, ${positions[i]})`)
+		// 	.select("text.filename")
+		// 	.text((d) => d.name);
 		groups.each(function (d) {
 			const groupSel = d3.select(this);
 			const unitDotsSel = groupSel.select("text.unit-dots");
@@ -151,7 +130,17 @@
 					})
 					.style("opacity", 0)
 					.transition()
-					.duration(1000)
+					.duration(function (d, i) {
+						const currentTransform =
+							this.getAttribute("transform") || "translate(0,0)";
+						const match = currentTransform.match(
+							/translate\(\s*0\s*,\s*([0-9.]+)\s*\)/,
+						);
+						const oldY = match ? +match[1] : 0;
+						const newY = positions[i];
+						const distance = Math.abs(newY - oldY);
+						return distance * 2;
+					})
 					.ease(d3.easeCubicOut)
 					.style("opacity", 1);
 			}
@@ -174,6 +163,26 @@
 			.attr("transform", (d, i) => `translate(0, ${positions[i]})`);
 
 		groups.select("text.filename").text((d) => d.name);
+
+		groups
+			.select("text.linecount")
+			.text((d) => `${d.lines.length} lines`)
+			.attr("x", 10);
+
+		enterGroups
+			.append("text")
+			.attr("class", "unit-dots")
+			.attr("x", dotsColumnX)
+			.attr("y", baseY - 2)
+			.attr("dominant-baseline", "mathematical")
+			.attr("fill", "#1f77b4")
+			.html((d) => generateDots(d, svgWidth));
+
+		groups
+			.select("text.unit-dots")
+			.html((d) => generateDots(d, svgWidth))
+			.attr("x", dotsColumnX)
+			.attr("fill", "#1f77b4");
 	}
 	let colorScale = d3.scaleOrdinal(d3.schemeTableau10);
 	let previousDotCounts = new Map();
